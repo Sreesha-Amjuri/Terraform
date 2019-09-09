@@ -41,7 +41,7 @@ pipeline {
 
       stage('apply_changes') {
         steps {
-          sh "echo 'yes' | sudo terraform apply $jenkins_node_custom_workspace_path/workspace" --auto-approve
+          sh "sudo terraform apply $jenkins_node_custom_workspace_path/workspace" --auto-approve
           }
           }
 

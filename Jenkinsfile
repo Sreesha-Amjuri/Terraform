@@ -1,4 +1,4 @@
-###Jenkinsfile###
+
 import groovy.json.JsonOutput
 //git env vars
     env.git_url = 'https://github.com/Sreesha-Amjuri/Terraform.git'

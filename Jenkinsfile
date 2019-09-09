@@ -3,7 +3,7 @@ import groovy.json.JsonOutput
 //git env vars
     env.git_url = 'https://github.com/Sreesha-Amjuri/Terraform.git'
     env.git_branch = 'master'
-    env.credentials_id = '1'
+    env.credentials_id = 'GITHUB'
 
 //jenkins env vars
     env.jenkins_server_url = 'http://13.233.183.168:80'
@@ -18,7 +18,7 @@ pipeline {
       stage('fetch_latest_code') {
         steps {
           git branch: "master" ,
-           //credentialsId: "$credentials_id" ,
+           credentialsId: "$credentials_id" ,
           url: "https://github.com/Sreesha-Amjuri/Terraform.git"
           }
         }

@@ -17,9 +17,9 @@ pipeline {
     stages {
       stage('fetch_latest_code') {
         steps {
-          git branch: "$git_branch" ,
-           credentialsId: "$credentials_id" ,
-          url: "$git_url"
+          git branch: "master" ,
+           //credentialsId: "$credentials_id" ,
+          url: "https://github.com/Sreesha-Amjuri/Terraform.git"
           }
         }
       stage('install_deps') {
@@ -34,14 +34,14 @@ pipeline {
       }
       stage('init_and_plan') {
         steps {
-          sh "sudo terraform init $jenkins_node_custom_workspace_path/workspace"
-          sh "sudo terraform plan $jenkins_node_custom_workspace_path/workspace"
+          sh "sudo terraform init /var/lib/jenkins/workspace"
+          sh "sudo terraform plan /var/lib/jenkins/workspace"
           }
       }
 
       stage('apply_changes') {
         steps {
-          sh "sudo terraform apply $jenkins_node_custom_workspace_path/workspace --auto-approve"
+          sh "sudo terraform apply /var/lib/jenkins/workspace --auto-approve"
           }
           }
 

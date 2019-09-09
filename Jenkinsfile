@@ -21,7 +21,7 @@ pipeline {
           credentialsId: "$credentials_id" ,
           url: "$git_url"
           }
-      }
+        }
       stage('install_deps') {
         steps {
           sh "sudo apt install wget zip python-pip -y"
@@ -38,20 +38,16 @@ pipeline {
           sh "sudo terraform plan $jenkins_node_custom_workspace_path/workspace"
           }
       }
-//      //stage('approve') {
-//      //steps {
-//        notifySlack("Do you approve deployment? $jenkins_server_url/jenkins/job/$JOB_NAME", notification_channel, [])
-//        input 'Do you approve deployment?'
-//        }
-//      }
+
       stage('apply_changes') {
         steps {
           sh "echo 'yes' | sudo terraform apply $jenkins_node_custom_workspace_path/workspace" --auto-approve
           }
           }
-}
+
   post {
     always {
       cleanWs()
       }
+  }
   }

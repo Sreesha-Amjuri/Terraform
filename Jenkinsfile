@@ -7,7 +7,7 @@ import groovy.json.JsonOutput
 
 //jenkins env vars
     env.jenkins_server_url = 'http://13.233.183.168:80'
-    env.jenkins_node_custom_workspace_path = "/var/lib/jenkins/workspace"
+    env.jenkins_node_custom_workspace_path = "/var/lib/jenkins/workspace/jenkins_pipeline"
     env.jenkins_node_label = 'master'
     env.terraform_version = '0.12.7'
 
@@ -25,14 +25,14 @@ pipeline {
  
       stage('init_and_plan') {
         steps {
-          sh "sudo terraform init /var/lib/jenkins/workspace"
-          sh "sudo terraform plan /var/lib/jenkins/workspace"
+          sh "sudo terraform init $jenkins_node_custom_workspace_path"
+          sh "sudo terraform plan $jenkins_node_custom_workspace_path"
           }
       }
 
       stage('apply_changes') {
         steps {
-          sh "sudo terraform apply /var/lib/jenkins/workspace --auto-approve"
+          sh "sudo terraform apply $jenkins_node_custom_workspace_path --auto-approve"
           }
           }
 

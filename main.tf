@@ -13,7 +13,7 @@ resource "aws_vpc" "My_VPC" {
  
 }
 
-resource "aws_vpc" "My_VPC" {
+resource "aws_vpc" "My_VPC2" {
   cidr_block           = "10.0.2.0/16"
   instance_tenancy     = "default" 
   enable_dns_support   = "true" 

@@ -22,6 +22,5 @@ resource "aws_vpc" "My_VPC" {
   tags {
    
    Name= "MyVPC
- 
-}
+   }
 }
